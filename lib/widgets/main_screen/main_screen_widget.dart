@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/widgets/movie_list/movie_list_widget.dart';
+//import 'package:flutter_application_2/widgets/movie_list/movie_list_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
   MainScreenWidget({Key? key}) : super(key: key);
@@ -10,18 +11,7 @@ class MainScreenWidget extends StatefulWidget {
 
 class _MainScreenWidgetState extends State<MainScreenWidget> {
   int _selectedTab = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-    ),
-    MovieListWidget(),
-    Text(
-      'Index 1: Business',
-    ),
-    Text(
-      'Index 2: School',
-    ),
-  ];
+  static final List<Widget> _widgetOptions = <Widget>[];
 
   void onSelectTab(int index) {
     if (_selectedTab == index) return;
@@ -36,8 +26,20 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       appBar: AppBar(
         title: const Text('TMDB'),
       ),
-      body: Center(
-        child: _widgetOptions[_selectedTab],
+      body: IndexedStack( // существуют одновремено только отображается один из них //Хронит все виджеты 
+        index: _selectedTab,
+        children: [
+          const Text(
+            'Index 0: Home',
+          ),
+          MovieListWidget(),
+          const Text(
+            'Index 1: Business',
+          ),
+          const Text(
+            'Index 2: School',
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
