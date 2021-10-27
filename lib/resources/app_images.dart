@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-//part of 'resources';
-
-// abstract class AppImages {
-//   static const tree = AssetImage('images/flutter.jpg');
-//}
 
 class AppImages {
   AppImages._();

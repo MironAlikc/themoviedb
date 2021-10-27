@@ -29,8 +29,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  spider: ^2.0.0
- # pedantic: ^1.11.1
+  #spider: ^2.0.0
+  flutter_secure_storage: ^4.2.1
+  pedantic: ^1.11.1
 
 
   # The following adds the Cupertino Icons font to your application.
