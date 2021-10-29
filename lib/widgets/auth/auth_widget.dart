@@ -44,7 +44,7 @@ class _HeaderWidget extends StatelessWidget {
           _FormWidget(),
           const SizedBox(height: 25),
           Text(
-            'Thank you very much, Alexander I m very happy to continue discussing the app development here, if that works for you and the team In terms of the Trello board, I ve been checking it periodically, but please feel free to tag me in anything that the team has questions on or anythi g that needs to be further clarified I d always love to receive any updated builds through TestFlight, please, as it will allow us to fully get a sense of the current state of the project Thank you again',
+            'Thank you very much, Alexander I m very happy to continue discussing the app development here, if that works for you and the team In terms of the Trello board, I ve been checking it periodically, but please feel free to tag me in anything that the team has questions on or anythi g that needs to be further clarified I d always love to receive any updated builds through TestFlight, please, as it will allow us to fully get a sense of the current state of the project Thank you',
             style: textStyle,
           ),
           const SizedBox(height: 5),
