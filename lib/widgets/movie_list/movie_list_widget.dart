@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/resources/app_images.dart';
+import 'package:flutter_application_2/ui/navigation/main_navigation.dart';
 
 class Movie {
   final int id; // Хранение даных
@@ -186,7 +187,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
   void _onMovieTap(int index) {
     final id = _movies[index].id;
     Navigator.of(context).pushNamed(
-      '/main_screen/movie_details',
+      MainNavigationRouteNams.movieDetails,
       arguments: id,
     );
   }

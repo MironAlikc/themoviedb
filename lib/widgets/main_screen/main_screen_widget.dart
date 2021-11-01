@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/library/widget/inherited/provider.dart';
+import 'package:flutter_application_2/widgets/main_screen/main_screen_model.dart';
 import 'package:flutter_application_2/widgets/movie_list/movie_list_widget.dart';
 //import 'package:flutter_application_2/widgets/movie_list/movie_list_widget.dart';
 
@@ -22,11 +24,14 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final model = NotifierProvider.read<MainScreenModel>(context);
+   
     return Scaffold(
       appBar: AppBar(
         title: const Text('TMDB'),
       ),
-      body: IndexedStack( // существуют одновремено только отображается один из них //Хронит все виджеты 
+      body: IndexedStack(
+        // существуют одновремено только отображается один из них //Хронит все виджеты
         index: _selectedTab,
         children: [
           const Text(

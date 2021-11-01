@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/library/widget/inherited/provider.dart';
 import 'package:flutter_application_2/tema/app_botton_style.dart';
 import 'package:flutter_application_2/widgets/auth/auth_model.dart';
 import 'package:flutter_application_2/widgets/main_screen/main_screen_widget.dart';
@@ -18,7 +19,7 @@ class _AuthWidgetState extends State<AuthWidget> {
         title: const Text('Login to your account'),
       ),
       body: ListView(
-        children: [
+        children: const [
           _HeaderWidget(),
         ],
       ),
@@ -31,7 +32,7 @@ class _HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = const TextStyle(
+    const textStyle = TextStyle(
       fontSize: 16,
       color: Colors.black,
     );
@@ -41,9 +42,9 @@ class _HeaderWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 25),
-          _FormWidget(),
+          const _FormWidget(),
           const SizedBox(height: 25),
-          Text(
+          const Text(
             'Thank you very much, Alexander I m very happy to continue discussing the app development here, if that works for you and the team In terms of the Trello board, I ve been checking it periodically, but please feel free to tag me in anything that the team has questions on or anythi g that needs to be further clarified I d always love to receive any updated builds through TestFlight, please, as it will allow us to fully get a sense of the current state of the project Thank you',
             style: textStyle,
           ),
@@ -55,7 +56,7 @@ class _HeaderWidget extends StatelessWidget {
             child: const Text('Register'),
           ),
           const SizedBox(height: 25),
-          Text(
+          const Text(
             'Anything that can be done to reduce the hours while still maintaining the functionality we’re aiming for would be sincerely appreciated',
             style: textStyle,
           ),
@@ -76,7 +77,7 @@ class _FormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = AuthProvider.read(context)?.model;
+    final model = NotifierProvider.read<AuthModel>(context);
     const textStyle = TextStyle(
       fontSize: 16,
       color: Color(0xFF212529),
@@ -95,7 +96,7 @@ class _FormWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const _ErrorMessageWidget(),
-        Text(
+        const Text(
           'Username',
           style: textStyle,
         ),
@@ -105,7 +106,7 @@ class _FormWidget extends StatelessWidget {
           decoration: textFieldDecorator,
         ),
         const SizedBox(height: 20),
-        Text(
+        const Text(
           'Passeord',
           style: textStyle,
         ),
@@ -138,7 +139,7 @@ class _AuthButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = AuthProvider.watch(context)?.model;
+    final model = NotifierProvider.watch<AuthModel>(context);
     const color = Color(0xFF01B4E4);
     final onPressed =
         model?.canStartAuth == true ? () => model?.auth(context) : null;
@@ -176,12 +177,16 @@ class _ErrorMessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final errotMessage = AuthProvider.watch(context)?.model.errorMessage;
-    if (errotMessage == null) return SizedBox.shrink();
+    final errorMessage =
+        NotifierProvider.watch<AuthModel>(context)?.errorMessage;
+    if (errorMessage == null)
+      return const SizedBox
+          .shrink(); // если errotMessage нету нам все это показивать не нужно
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Text(
-        errotMessage,
+        errorMessage,
         style: const TextStyle(
           fontSize: 17,
           color: Colors.red,
